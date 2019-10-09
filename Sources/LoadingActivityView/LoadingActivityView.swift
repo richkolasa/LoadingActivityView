@@ -12,7 +12,7 @@ public struct LoadingActivityConfiguration {
     let textColor: UIColor
     let indicatorStyle: UIActivityIndicatorView.Style
     
-    public init(message: String, font: UIFont, axis: NSLayoutConstraint.Axis, spacing: CGFloat, overlayOpactiy: CGFloat, textColor: UIColor, indicatorStyle: UIActivityIndicatorView.Style = .white) {
+    public init(message: String, font: UIFont, axis: NSLayoutConstraint.Axis, spacing: CGFloat, overlayOpactiy: CGFloat, textColor: UIColor, indicatorStyle: UIActivityIndicatorView.Style = .gray) {
         
         self.message = message
         self.font = font
