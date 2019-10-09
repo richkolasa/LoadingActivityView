@@ -36,7 +36,7 @@ public final class LoadingActivityView: UIView {
         return label
     }()
     
-    init(frame: CGRect, configuration: LoadingActivityConfiguration) {
+    public init(frame: CGRect, configuration: LoadingActivityConfiguration) {
         super.init(frame: frame)
         backgroundColor = UIColor.black.withAlphaComponent(configuration.overlayOpacity)
         
