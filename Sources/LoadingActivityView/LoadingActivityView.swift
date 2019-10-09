@@ -10,7 +10,18 @@ public struct LoadingActivityConfiguration {
     /// A value between 0.0 and 1.0
     let overlayOpacity: CGFloat
     let textColor: UIColor
-    let indicatorStyle: UIActivityIndicatorView.Style = .white
+    let indicatorStyle: UIActivityIndicatorView.Style
+    
+    public init(message: String, font: UIFont, axis: NSLayoutConstraint.Axis, spacing: CGFloat, overlayOpactiy: CGFloat, textColor: UIColor, indicatorStyle: UIActivityIndicatorView.Style = .white) {
+        
+        self.message = message
+        self.font = font
+        self.axis = axis
+        self.spacing = spacing
+        self.overlayOpacity = overlayOpactiy
+        self.textColor = textColor
+        self.indicatorStyle = indicatorStyle
+    }
 }
 
 public final class LoadingActivityView: UIView {
