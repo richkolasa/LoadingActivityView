@@ -1,7 +1,7 @@
 import UIKit
 
 public struct LoadingActivityConfiguration {
-    let message: String
+    let message: String?
     let font: UIFont
     /// The layout direction of the view
     let axis: NSLayoutConstraint.Axis
@@ -12,7 +12,7 @@ public struct LoadingActivityConfiguration {
     let textColor: UIColor
     let indicatorStyle: UIActivityIndicatorView.Style
     
-    public init(message: String, font: UIFont, axis: NSLayoutConstraint.Axis, spacing: CGFloat, overlayOpactiy: CGFloat, textColor: UIColor, indicatorStyle: UIActivityIndicatorView.Style = .gray) {
+    public init(message: String?, font: UIFont, axis: NSLayoutConstraint.Axis, spacing: CGFloat, overlayOpactiy: CGFloat, textColor: UIColor, indicatorStyle: UIActivityIndicatorView.Style = .gray) {
         
         self.message = message
         self.font = font
@@ -53,19 +53,20 @@ public final class LoadingActivityView: UIView {
         
         stackView.addArrangedSubview(loadingIndicator)
         
-        messageLabel.text = configuration.message
-        messageLabel.textColor = configuration.textColor
-        
-        let labelWrapper = UIView()
-        labelWrapper.translatesAutoresizingMaskIntoConstraints = false
-        labelWrapper.addSubview(messageLabel)
-        
-        messageLabel.leadingAnchor.constraint(equalTo: labelWrapper.leadingAnchor).isActive = true
-        messageLabel.trailingAnchor.constraint(equalTo: labelWrapper.trailingAnchor).isActive = true
-        messageLabel.topAnchor.constraint(equalTo: labelWrapper.topAnchor).isActive = true
-        messageLabel.bottomAnchor.constraint(equalTo: labelWrapper.bottomAnchor).isActive = true
-        
-        stackView.addArrangedSubview(labelWrapper)
+        if let message = configuration.message {
+            let labelWrapper = UIView()
+            labelWrapper.translatesAutoresizingMaskIntoConstraints = false
+            labelWrapper.addSubview(messageLabel)
+            
+            messageLabel.text = configuration.message
+            messageLabel.textColor = configuration.textColor
+            messageLabel.leadingAnchor.constraint(equalTo: labelWrapper.leadingAnchor).isActive = true
+            messageLabel.trailingAnchor.constraint(equalTo: labelWrapper.trailingAnchor).isActive = true
+            messageLabel.topAnchor.constraint(equalTo: labelWrapper.topAnchor).isActive = true
+            messageLabel.bottomAnchor.constraint(equalTo: labelWrapper.bottomAnchor).isActive = true
+            
+            stackView.addArrangedSubview(labelWrapper)
+        }
         
         let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .prominent))
         visualEffectView.translatesAutoresizingMaskIntoConstraints = false
