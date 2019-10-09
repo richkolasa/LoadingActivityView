@@ -1,6 +1,6 @@
 import UIKit
 
-struct LoadingActivityConfiguration {
+public struct LoadingActivityConfiguration {
     let message: String
     let font: UIFont
     /// The layout direction of the view
@@ -13,7 +13,7 @@ struct LoadingActivityConfiguration {
     let indicatorStyle: UIActivityIndicatorView.Style = .white
 }
 
-final class LoadingActivityView: UIView {
+public final class LoadingActivityView: UIView {
     private let stackViewPadding = CGSize(width: 65, height: 40)
     private let visualEffectViewPadding: CGFloat = -40
     
