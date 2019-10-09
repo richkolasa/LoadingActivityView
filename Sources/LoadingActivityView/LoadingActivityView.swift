@@ -1,3 +1,5 @@
+import UIKit
+
 struct LoadingActivityConfiguration {
     let message: String
     let font: UIFont
@@ -7,6 +9,7 @@ struct LoadingActivityConfiguration {
     let spacing: CGFloat
     /// A value between 0.0 and 1.0
     let overlayOpacity: CGFloat
+    let textColor: UIColor
     let indicatorStyle: UIActivityIndicatorView.Style = .white
 }
 
@@ -18,7 +21,6 @@ final class LoadingActivityView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 17)
-        label.textColor = ColorCompatibility.label
         label.numberOfLines = 0
         return label
     }()
@@ -41,6 +43,7 @@ final class LoadingActivityView: UIView {
         stackView.addArrangedSubview(loadingIndicator)
         
         messageLabel.text = configuration.message
+        messageLabel.textColor = configuration.textColor
         
         let labelWrapper = UIView()
         labelWrapper.translatesAutoresizingMaskIntoConstraints = false
